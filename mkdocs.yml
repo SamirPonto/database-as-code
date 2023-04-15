@@ -1,0 +1,9 @@
+site_name: Database As Code
+repo_url: https://github.com/SamirPonto/database-as-code
+repo_name: samirPonto/database-as-code
+edit_uri: tree/main/docs
+
+theme:
+  name: material
+  # logo: same path to favicon
+  # favicon: path to logo.png

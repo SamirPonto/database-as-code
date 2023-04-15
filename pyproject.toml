@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "database-as-code"
+version = "0.0.1"
+description = ""
+authors = ["Samir Araripe <samir.araripe@delfosim.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+SQLAlchemy = "^2.0.9"
+alembic = "^1.10.3"
+
+[tool.poetry.dev-dependencies]
+ipdb = "^0.13.13"
+pytest = "^7.3.1"
+mkdocs = "^1.4.2"
+taskipy = "^1.10.4"
+mkdocs-material = "^9.1.6"
+coverage = "^7.2.3"
+black = "^23.3.0"
+isort = "^5.12.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = "--doctest-modules"
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.black]
+line_length = 79
+
+[tool.taskipy.tasks]
+lint = "black . && isort ."
+docs = "mkdocs serve"
+pre_test == "task lint"
+test = "pytest -s -x --cov=database_as_code -vv"
+post_test = "coverage html"
